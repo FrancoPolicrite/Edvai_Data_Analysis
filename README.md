@@ -43,5 +43,53 @@ A continuación, se presentan las métricas seleccionadas, acompañadas de su me
 
 ![Plan de Métricas](./plan-de-metricas/Plandemetricas.PNG)
 
+## Desarrollo del Proyecto
+
+### Descripción de la Fuente de Datos
+El conjunto de datos utilizado es un archivo **CSV** que contiene **25 columnas** de información y **2823 registros**. Los datos documentan transacciones comerciales de modelos a escala en diversas categorías, tamaños de trato (`DealSize`) y regiones, proporcionando una valiosa fuente para analizar tendencias de ventas, comportamiento del cliente y desempeño de productos.
+
+![Sales Bronze](./images/Salesbronze.PNG)
+
+## Data Flow
+
+A continuación, se detalla el flujo de datos utilizado para la Extracción, Transformación y Carga de Datos (ETL) en el proyecto:
+
+![DataFlow](./images/Dataflow.png)
+
+Se consideraron los siguientes aspectos para la manipulación de la base de datos:
+
+### Entorno de Trabajo
+Las consultas están diseñadas para ejecutarse en **Google Cloud Platform > BigQuery**, utilizando la sintaxis específica de este entorno.
+
+### Capa Bronze
+- Se subió el archivo **CSV**, que contiene **25 columnas** y **2823 registros**, como la tabla `Sales` en el conjunto de datos `my_project_bronze` dentro del proyecto denominado `tpintegradorev`.
+- En esta capa, los datos se almacenan sin modificaciones para conservar su estado original.
+
+### Capa Silver
+- En esta etapa, se transformaron y depuraron los datos provenientes de la capa Bronze.
+- Se creó la tabla `Sales` en el conjunto de datos `my_project_silver`. Esta tabla contiene únicamente registros con valores completos en campos clave:
+  - `ORDERNUMBER`
+  - `ORDERDATE`
+  - `STATUS`
+  - `PRODUCTLINE`
+  - `PRODUCTCODE`
+  - `CUSTOMERNAME`
+  - `DEALSIZE`
+
+Para realizar esta transformación, se utilizó la siguiente consulta:
+
+```sql
+-- Crear tabla Sales en la capa Silver --
+CREATE OR REPLACE TABLE `tpintegradorev.my_project_silver.Sales` AS
+SELECT *
+FROM `tpintegradorev.my_project_bronze.SalesA2`
+WHERE
+  ORDERNUMBER IS NOT NULL
+  AND ORDERDATE IS NOT NULL
+  AND STATUS IS NOT NULL
+  AND PRODUCTLINE IS NOT NULL
+  AND PRODUCTCODE IS NOT NULL
+  AND CUSTOMERNAME IS NOT NULL
+  AND DEALSIZE IS NOT NULL;
 
 
