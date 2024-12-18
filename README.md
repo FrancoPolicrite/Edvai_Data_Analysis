@@ -288,3 +288,95 @@ Los dashboards destacan aspectos clave de las ventas y presentan visualizaciones
 Los dashboards fueron diseñados con el objetivo de facilitar la comprensión de las visualizaciones, destacando las métricas principales y su relación con los datos, garantizando un análisis claro y efectivo.
 
 
+
+![Home](images/Home.PNG)
+
+![General Summary](images/GeneralSummary.PNG)
+
+![Sales Analysis by Product Line](images/Sales%20Analysis%20by%20ProductLine.PNG)
+
+![Temporal Analysis](images/TemporalAnalysis.PNG)
+
+![Customer Analysis](images/Analysisbycustomer.PNG)
+
+![Order Status Analysis](images/OrderStatusAnalysis.PNG)
+
+![Sales Details](images/SalesDetails.PNG)
+
+![Deal Size Analysis](images/DealsizeAnalysis.PNG)
+
+![Geographic Analysis](images/GeographicAnalysis.PNG)
+
+# Prueba de Hipótesis
+
+## Hipótesis 1
+
+**Las ventas (`Sales`) aumentan durante el último trimestre del año debido a la estacionalidad de compras. ¿Es real?**
+
+Se realizó un análisis de los gráficos, donde en el eje X se representa el período de fechas desde 2003 hasta mediados de 2005, y en el eje Y, las ventas (`Sales`). Los gráficos analizados son:
+
+- **`Sales and Sales Target by Year and Month`**
+- **`Sales by MonthName and Year`**
+
+![Hipótesis 1 - Sales and Sales Target by Year and Month](images/Hipotesis1.PNG)
+
+El gráfico `Sales and Sales Target by Year and Month` muestra picos claros en las ventas totales durante noviembre de 2003 y noviembre de 2004, evidenciando un incremento significativo en esos meses. Además, el gráfico `Sales by MonthName and Year` confirma este patrón para los años 2003 y 2004, donde los meses de octubre, noviembre y diciembre presentan un aumento considerable en las ventas.
+
+Sin embargo, para el año 2005 no se dispone de datos correspondientes a noviembre, lo que limita la evaluación completa del último trimestre para ese año. A pesar de esta falta de información, los datos disponibles de años anteriores respaldan la hipótesis.
+
+En conclusión, **la hipótesis es válida** para los años 2003 y 2004, pero no puede confirmarse completamente para 2005 debido a la ausencia de datos. Aun así, el patrón consistente observado en años previos refuerza la relación entre la estacionalidad y el aumento de ventas en el último trimestre del año.
+
+## Hipótesis 2
+
+**Las líneas de producto `Vintage Cars` y `Classic Cars` generan la mayor proporción de ingresos totales.**
+
+![Hipótesis 2 - Sales by PRODUCTLINE and DEALSIZE](images/Hipotesis2.PNG)
+
+Analizando los gráficos proporcionados, se puede validar la hipótesis de que las líneas de producto `Vintage Cars` y `Classic Cars` generan la mayor proporción de ingresos totales.
+
+En el gráfico `Sales by PRODUCTLINE and DEALSIZE`, se observa que las ventas totales de las líneas `Classic Cars` y `Vintage Cars` son significativamente mayores en comparación con las otras categorías de productos. `Classic Cars` lidera con ingresos de **$2.969M**, seguido por `Vintage Cars` con **$1.644M**. Estas dos líneas representan una proporción considerable de las ventas totales.
+
+El gráfico circular `Sales by PRODUCTLINE` refuerza este hallazgo, mostrando que `Classic Cars` representa el **35.8%** de las ventas totales, mientras que `Vintage Cars` contribuye con un **19.8%**. Juntas, estas dos líneas de producto abarcan más del **55%** de los ingresos totales, destacándose como las categorías más rentables.
+
+En conclusión, **la hipótesis es verdadera**, ya que los datos confirman que las líneas de producto `Vintage Cars` y `Classic Cars` generan la mayor proporción de ingresos totales, consolidándose como las principales fuentes de ventas en este análisis.
+
+## Hipótesis 3
+
+**Los `Dealsize Large` son los que más ingresos (`Sales`) generan, a pesar de ser menos frecuentes.**
+
+![Hipótesis 3 - Sales by Dealsize by Year and Month](images/Hipotesis3.png)
+
+El gráfico `Sales by Dealsize by Year and Month` muestra que los tamaños de trato `Medium` (línea azul) destacan como los principales generadores de ingresos, especialmente durante los meses de noviembre y diciembre, donde alcanzan sus picos más altos. En comparación, los tratos `Small` (línea morada) también contribuyen con un nivel significativo de ingresos, aunque menor que los tratos `Medium`.
+
+Por otro lado, los tratos `Large` (línea negra) generan ingresos considerablemente más bajos durante todo el período analizado y no superan a los otros tamaños en ningún momento, a pesar de su menor frecuencia. Esto evidencia que los tratos de mayor tamaño no son los principales contribuyentes al total de ventas.
+
+**La hipótesis no es válida**, ya que los datos demuestran que los tamaños de trato `Medium` son los líderes en generación de ingresos.
+
+## Hipótesis 4
+
+**El territorio `NA` lidera en ingresos (`Sales`), siendo la región que más ingresos genera.**
+
+![Hipótesis 4 - Sales by COUNTRY and PRODUCTLINE](images/Hipotesis4.PNG)
+
+El gráfico `Sales by COUNTRY and PRODUCTLINE` confirma que `USA`, perteneciente al territorio `NA` (Norteamérica), lidera en ingresos con un total de **$2.99M**, siendo significativamente superior al de otros países. En comparación:
+
+- España alcanza **$1.02M**.
+- Francia registra **$0.92M**.
+- Australia tiene **$0.52M**.
+- Reino Unido aporta **$0.41M**.
+
+**La hipótesis es verdadera**, ya que `USA` representa la mayor fuente de ingresos entre los países analizados.
+
+## Hipótesis 5
+
+**Se observa una disminución en nuevos clientes (`CustomersNew`) en el periodo de transición entre 2003 y 2004.**
+
+![Hipótesis 5 - New customers by Year](images/Hipotesis5.PNG)
+
+La hipótesis **"Se observa una disminución en nuevos clientes (`CustomersNew`) en el periodo de transición entre 2003 y 2004"** es verdadera.
+
+El gráfico `New customers by Year` muestra una disminución clara en el número de nuevos clientes registrados al comparar los años 2003 y 2004. En 2003, se alcanzó un mayor número de clientes nuevos, mientras que en 2004 esta cifra disminuyó considerablemente, como se evidencia en la caída pronunciada representada por la línea roja punteada.
+
+Los datos respaldan la hipótesis de que hubo una reducción en la captación de nuevos clientes durante este período. Esta tendencia podría estar relacionada con cambios en las estrategias comerciales, condiciones del mercado, o incluso con una posible saturación del segmento de clientes objetivo.
+
+
