@@ -420,16 +420,16 @@ Los datos respaldan la hipótesis de que hubo una reducción en la captación de
 
 A partir del análisis de datos y las visualizaciones realizadas, se identificaron los siguientes hallazgos significativos:
 
-### 1. Incremento de Ventas por Estacionalidad
+### 1. Incremento de Ventas por Estacionalidad.
 - Las ventas aumentan significativamente en el último trimestre del año, especialmente en octubre, noviembre y diciembre.
 
-### 2. Liderazgo de las Líneas `Classic Cars` y `Vintage Cars`
+### 2. Liderazgo de las Líneas `Classic Cars` y `Vintage Cars`.
 - Estas líneas generan más del 55% de los ingresos totales, liderando en rentabilidad.
 
-### 3. Importancia del Tamaño de Trato `Medium`
+### 3. Importancia del Tamaño de Trato `Medium`.
 - Los tratos `Medium` generan el mayor volumen de ingresos totales y son los más frecuentes.
 
-### 4. Dominio del Territorio `NA` en Ingresos
+### 4. Dominio del Territorio `NA` en Ingresos.
 - Norteamérica lidera con Estados Unidos como el mayor generador de ingresos.
 
 ### 5. Tendencia Descendente en Nuevos Clientes
