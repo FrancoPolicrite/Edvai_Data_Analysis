@@ -117,51 +117,33 @@ WHERE
 ---
 ## ⭐ Data Mart
 
-En el contexto de este proyecto, el Data Mart fue diseñado para centralizar y organizar la información clave relacionada con las ventas de modelos a escala, facilitando el análisis de datos mediante la segmentación y almacenamiento eficiente de los parámetros más relevantes.
+En el contexto de este proyecto, el **Data Mart** fue diseñado para centralizar y organizar la información clave relacionada con las ventas de modelos a escala, facilitando el análisis de datos mediante la segmentación y almacenamiento eficiente de los parámetros más relevantes.
 
-Previamente, se realiza un proceso de limpieza para asegurar la calidad de los datos utilizados. En este caso, los datos fueron preprocesados para eliminar valores nulos (NULL) y registros duplicados, garantizando que la información sea confiable y lista para el análisis.
+Previamente, se realiza un proceso de limpieza para asegurar la calidad de los datos utilizados. En este caso, los datos fueron preprocesados para eliminar valores nulos (`NULL`) y registros duplicados, garantizando que la información sea confiable y lista para el análisis.
 
 Posteriormente, para el modelado y normalización de los datos, se creó un Data Mart con un modelo tipo ⭐ estrella compuesto por 5 tablas dimensionales y 1 tabla de hechos.
 
 ![Modelo Estrella](./images/ModeloEstrella.png)
 
+---
 
-# Modelo de Datos y Scripts SQL
+# ⚙️ Modelo de Datos y Scripts SQL
 
 Este modelo permite estructurar los datos de manera eficiente, agrupándolos en categorías como:
 
-- **Transacciones (Fact_Sales)**: Contiene los datos clave de las ventas, incluyendo cantidades, fechas y precios.
-- **Clientes (Dim_Customer)**: Información detallada sobre los clientes, como nombres, contactos y ubicación.
-- **Estados de Pedido (Dim_Status)**: Mapeo de los diferentes estados de los pedidos.
-- **Productos (Dim_Product)**: Detalles sobre los productos vendidos, como códigos, líneas de producto y precios sugeridos.
-- **Tamaños de Trato (Dim_DealSize)**: Clasificación de las ventas por tamaño de trato (Small, Medium, Large).
+- **Transacciones (`Fact_Sales`)**: Contiene los datos clave de las ventas, incluyendo cantidades, fechas y precios.
+- **Clientes (`Dim_Customer`)**: Información detallada sobre los clientes, como nombres, contactos y ubicación.
+- **Estados de Pedido (`Dim_Status`)**: Mapeo de los diferentes estados de los pedidos.
+- **Productos (`Dim_Product`)**: Detalles sobre los productos vendidos, como códigos, líneas de producto y precios sugeridos.
+- **Tamaños de Trato (`Dim_DealSize`)**: Clasificación de las ventas por tamaño de trato (`Small`, `Medium`, `Large`).
 
-## Scripts de Consultas
+---
 
-A continuación, se presentan los scripts utilizados para la creación de las tablas del Data Mart:
+## 📝 Script de Creación de Tablas
 
+A continuación, se presenta el script completo para la creación de todas las tablas del **Data Mart**:
 
 ```sql
--- Creación de la tabla Fact_Sales
-CREATE OR REPLACE TABLE `tpintegradorev.my_project_silver.Fact_Sales` AS 
-SELECT 
-    s.ORDERNUMBER,
-    s.ORDERDATE,
-    s.QUANTITYORDERED,
-    s.ORDERLINENUMBER,
-    ds.STATUSNUMBER,
-    s.PRODUCTCODE,
-    dc.CUSTOMERNUMBER,
-    dd.DEALSIZENUMBER,
-    s.PRICEEACH
-FROM `tpintegradorev.my_project_silver.Sales` s
-LEFT JOIN `tpintegradorev.my_project_silver.Dim_Status` ds 
-    ON s.STATUS = ds.STATUS
-LEFT JOIN `tpintegradorev.my_project_silver.Dim_Customer` dc 
-    ON s.CUSTOMERNAME = dc.CUSTOMERNAME AND s.CITY = dc.CITY
-LEFT JOIN `tpintegradorev.my_project_silver.Dim_DealSize` dd 
-    ON s.DEALSIZE = dd.DEALSIZE;
-
 -- Creación de la tabla Dim_Customer
 CREATE OR REPLACE TABLE `tpintegradorev.my_project_silver.Dim_Customer` AS 
 SELECT 
@@ -234,7 +216,28 @@ FROM (
 )
 WHERE DEALSIZE IS NOT NULL
 ORDER BY DEALSIZE DESC;
+
+-- Creación de la tabla Fact_Sales
+CREATE OR REPLACE TABLE `tpintegradorev.my_project_silver.Fact_Sales` AS 
+SELECT 
+    s.ORDERNUMBER,
+    s.ORDERDATE,
+    s.QUANTITYORDERED,
+    s.ORDERLINENUMBER,
+    ds.STATUSNUMBER,
+    s.PRODUCTCODE,
+    dc.CUSTOMERNUMBER,
+    dd.DEALSIZENUMBER,
+    s.PRICEEACH
+FROM `tpintegradorev.my_project_silver.Sales` s
+LEFT JOIN `tpintegradorev.my_project_silver.Dim_Status` ds 
+    ON s.STATUS = ds.STATUS
+LEFT JOIN `tpintegradorev.my_project_silver.Dim_Customer` dc 
+    ON s.CUSTOMERNAME = dc.CUSTOMERNAME AND s.CITY = dc.CITY
+LEFT JOIN `tpintegradorev.my_project_silver.Dim_DealSize` dd 
+    ON s.DEALSIZE = dd.DEALSIZE;
 ```````
+
 # 📏 Métricas de Rendimiento
 
 Para este proyecto, se utilizaron medidas DAX para calcular los KPIs que se describen en el plan de métricas. A continuación, se detallan las medidas creadas en la tabla **Medidas**:
