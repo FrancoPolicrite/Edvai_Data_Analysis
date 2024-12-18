@@ -6,6 +6,15 @@
 # 📊 Análisis de Ventas de Vehículos de Modelos a Escala
 
 Este proyecto tiene como objetivo analizar las ventas de productos coleccionables, específicamente vehículos de modelos a escala, utilizando métricas clave (KPIs) y visualizaciones avanzadas para identificar patrones, tendencias y oportunidades de mejora en las operaciones comerciales.
+---
+
+## 📂 Archivos del Proyecto
+
+**Reporte en Power BI Service:**  
+[**Ver Reporte en Power BI**](https://app.powerbi.com/groups/me/reports/b5c05d4b-fb8f-4df2-90ad-3e7a74ece842/509faa99ae2a5e346e2c?experience=power-bi)
+
+**Archivo Power BI (.pbix):**  
+[**Descargar Collectibles Sales Analysis.pbix**](./Collectibles%20Sales%20Analysis.pbix)
 
 ---
 
@@ -404,4 +413,29 @@ El gráfico `New customers by Year` muestra una disminución clara en el número
 
 Los datos respaldan la hipótesis de que hubo una reducción en la captación de nuevos clientes durante este período. Esta tendencia podría estar relacionada con cambios en las estrategias comerciales, condiciones del mercado, o incluso con una posible saturación del segmento de clientes objetivo.
 
+---
+## 🏆 Resultados Clave
+
+A partir del análisis de datos y las visualizaciones realizadas, se identificaron los siguientes hallazgos significativos:
+
+### 1. Incremento de Ventas por Estacionalidad
+- Las ventas aumentan significativamente en el último trimestre del año, especialmente en octubre, noviembre y diciembre.
+
+### 2. Liderazgo de las Líneas `Classic Cars` y `Vintage Cars`
+- Estas líneas generan más del 55% de los ingresos totales, liderando en rentabilidad.
+
+### 3. Importancia del Tamaño de Trato `Medium`
+- Los tratos `Medium` generan el mayor volumen de ingresos totales y son los más frecuentes.
+
+### 4. Dominio del Territorio `NA` en Ingresos
+- Norteamérica lidera con Estados Unidos como el mayor generador de ingresos.
+
+### 5. Tendencia Descendente en Nuevos Clientes
+- Se observa una disminución en la captación de nuevos clientes en 2004 con respecto a 2003.
+
+---
+## 📧 Contacto
+
+Cualquier duda sobre el proyecto, no dudes en conectarte conmigo:  
+[**LinkedIn: Franco Policrite**](https://www.linkedin.com/in/franco-policrite-1a2a16206/)
 
