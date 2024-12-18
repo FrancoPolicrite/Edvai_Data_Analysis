@@ -309,7 +309,7 @@ Para este proyecto, se utilizaron medidas DAX para calcular los KPIs que se desc
 
 ---
 
-#📈 Análisis de Datos
+# 📈 Análisis de Datos
 
 El análisis de datos se realizó con un enfoque descriptivo y comparativo. Se creó un reporte compuesto por:
 
