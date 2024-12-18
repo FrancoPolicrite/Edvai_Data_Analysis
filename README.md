@@ -6,7 +6,9 @@
 # 📊 Análisis de Ventas de Vehículos de Modelos a Escala
 
 Este proyecto tiene como objetivo analizar las ventas de productos coleccionables, específicamente vehículos de modelos a escala, utilizando métricas clave (KPIs) y visualizaciones avanzadas para identificar patrones, tendencias y oportunidades de mejora en las operaciones comerciales.
+
 ---
+
 
 ## 📂 Archivos del Proyecto
 
