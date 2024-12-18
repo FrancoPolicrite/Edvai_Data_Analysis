@@ -213,5 +213,78 @@ FROM (
 WHERE DEALSIZE IS NOT NULL
 ORDER BY DEALSIZE DESC;
 ```````
+# Métricas de Rendimiento
+
+Para este proyecto, se utilizaron medidas DAX para calcular los KPIs que se describen en el plan de métricas. A continuación, se detallan las medidas creadas en la tabla **Medidas**:
+
+## Métricas
+
+### Ventas por Cliente
+`Total_Sales_Per_Customer = CALCULATE([002 $ Total_Sales], RELATEDTABLE(Dim_Customer))`
+
+### Clientes Activos
+`Active_Clients = DISTINCTCOUNT(Fact_Sales[CUSTOMERNUMBER])`
+
+### Ranking de Clientes
+`Customer_Ranking = RANKX(ALL(Dim_Customer), [014 $ Total_Sales_Per_Customer], , DESC, DENSE)`
+
+### Nuevos Clientes por Año
+`New_Customers_Per_Year = CALCULATE(DISTINCTCOUNT(Fact_Sales[CUSTOMERNUMBER]), FILTER(Fact_Sales, YEAR(Fact_Sales[ORDERDATE]) = YEAR(CALCULATE(MIN(Fact_Sales[ORDERDATE]), ALLEXCEPT(Fact_Sales, Fact_Sales[CUSTOMERNUMBER])))))`
+
+### Pedidos Cancelados
+`Order_cancelled = CALCULATE(COUNT(Fact_Sales[ORDERNUMBER]), Dim_Status[STATUS] = "Cancelled")`
+
+### Órdenes Totales
+`Total_Orders = COUNT(Fact_Sales[ORDERNUMBER])`
+
+### Porcentaje de Pedidos Cancelados
+`Percentage_Cancelled = DIVIDE([009 $ Order_cancelled], [010 $ Total_Orders], 0)`
+
+### Ingresos Perdidos
+`Lost_Revenue = -CALCULATE(SUMX(Fact_Sales, Fact_Sales[QUANTITYORDERED] * Fact_Sales[PRICEEACH]), Dim_Status[STATUS] = "Cancelled")`
+
+### Porcentaje de Ingresos Perdidos
+`Percentage_Lost_Revenue = DIVIDE([012 $ Lost_Revenue], [002 $ Total_Sales], 0)`
+
+### Número Total de Transacciones
+`Transaction_numbers = DISTINCTCOUNT(Fact_Sales[ORDERNUMBER])`
+
+### Cantidad Total Pedida
+`Total_Quantity_Ordered = SUM(Fact_Sales[QUANTITYORDERED])`
+
+### Total Ventas
+`Total_Sales = SUMX(Fact_Sales, Fact_Sales[QUANTITYORDERED] * Fact_Sales[PRICEEACH])`
+
+### Precio Promedio
+`Average_Price = AVERAGE(Fact_Sales[PRICEEACH])`
+
+### Promedio Ventas por Pedido
+`Sales_Average_Order = AVERAGEX(VALUES(Fact_Sales[ORDERNUMBER]), SUMX(FILTER(Fact_Sales, Fact_Sales[ORDERNUMBER] = EARLIER(Fact_Sales[ORDERNUMBER])), Fact_Sales[QUANTITYORDERED] * Fact_Sales[PRICEEACH]))`
+
+### Mes con Mejor Desempeño
+`Top_Performing_Month = FIRSTNONBLANK(TOPN(1, VALUES(Dim_Calendar[MonthName]), CALCULATE([002 $ Total_Sales])), 1)`
+
+### Ventas del Año Anterior
+`Total_Sales_PY = CALCULATE([002 $ Total_Sales], SAMEPERIODLASTYEAR(Dim_Calendar[Date]))`
+
+### Crecimiento Interanual
+`YoY_Growth = IF(ISBLANK([002 $ Total_Sales]), BLANK(), DIVIDE([002 $ Total_Sales] - CALCULATE([002 $ Total_Sales], SAMEPERIODLASTYEAR(Dim_Calendar[Date])), CALCULATE([002 $ Total_Sales], SAMEPERIODLASTYEAR(Dim_Calendar[Date]))))`
+
+### Objetivo de Ventas
+`Sale_Target = [002 $ Total_Sales] * 'Parámetro'[Valor de Parámetro]`
+
+---
+
+# Análisis de Datos
+
+El análisis de datos se realizó con un enfoque descriptivo y comparativo. Se creó un reporte compuesto por:
+
+- **1 Portada**
+- **8 Dashboards**
+
+Los dashboards destacan aspectos clave de las ventas y presentan visualizaciones específicas para abordar cada una de las hipótesis de negocio. Esto permitió identificar **insights relevantes** para el proyecto.
+
+### Objetivo del Diseño
+Los dashboards fueron diseñados con el objetivo de facilitar la comprensión de las visualizaciones, destacando las métricas principales y su relación con los datos, garantizando un análisis claro y efectivo.
 
 
