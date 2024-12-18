@@ -91,5 +91,127 @@ WHERE
   AND PRODUCTCODE IS NOT NULL
   AND CUSTOMERNAME IS NOT NULL
   AND DEALSIZE IS NOT NULL;
+```````
+![Sales Silver](./images/Salessilver.PNG)
+## Data Mart
+
+En el contexto de este proyecto, el Data Mart fue diseñado para centralizar y organizar la información clave relacionada con las ventas de modelos a escala, facilitando el análisis de datos mediante la segmentación y almacenamiento eficiente de los parámetros más relevantes.
+
+Previamente, se realiza un proceso de limpieza para asegurar la calidad de los datos utilizados. En este caso, los datos fueron preprocesados para eliminar valores nulos (NULL) y registros duplicados, garantizando que la información sea confiable y lista para el análisis.
+
+Posteriormente, para el modelado y normalización de los datos, se creó un Data Mart con un modelo tipo estrella compuesto por 5 tablas dimensionales y 1 tabla de hechos.
+
+![Modelo Estrella](./images/ModeloEstrella.png)
+
+
+# Modelo de Datos y Scripts SQL
+
+Este modelo permite estructurar los datos de manera eficiente, agrupándolos en categorías como:
+
+- **Transacciones (Fact_Sales)**: Contiene los datos clave de las ventas, incluyendo cantidades, fechas y precios.
+- **Clientes (Dim_Customer)**: Información detallada sobre los clientes, como nombres, contactos y ubicación.
+- **Estados de Pedido (Dim_Status)**: Mapeo de los diferentes estados de los pedidos.
+- **Productos (Dim_Product)**: Detalles sobre los productos vendidos, como códigos, líneas de producto y precios sugeridos.
+- **Tamaños de Trato (Dim_DealSize)**: Clasificación de las ventas por tamaño de trato (Small, Medium, Large).
+
+## Scripts de Consultas
+
+A continuación, se presentan los scripts utilizados para la creación de las tablas del Data Mart:
+
+
+```sql
+-- Creación de la tabla Fact_Sales
+CREATE OR REPLACE TABLE `tpintegradorev.my_project_silver.Fact_Sales` AS 
+SELECT 
+    s.ORDERNUMBER,
+    s.ORDERDATE,
+    s.QUANTITYORDERED,
+    s.ORDERLINENUMBER,
+    ds.STATUSNUMBER,
+    s.PRODUCTCODE,
+    dc.CUSTOMERNUMBER,
+    dd.DEALSIZENUMBER,
+    s.PRICEEACH
+FROM `tpintegradorev.my_project_silver.Sales` s
+LEFT JOIN `tpintegradorev.my_project_silver.Dim_Status` ds 
+    ON s.STATUS = ds.STATUS
+LEFT JOIN `tpintegradorev.my_project_silver.Dim_Customer` dc 
+    ON s.CUSTOMERNAME = dc.CUSTOMERNAME AND s.CITY = dc.CITY
+LEFT JOIN `tpintegradorev.my_project_silver.Dim_DealSize` dd 
+    ON s.DEALSIZE = dd.DEALSIZE;
+
+-- Creación de la tabla Dim_Customer
+CREATE OR REPLACE TABLE `tpintegradorev.my_project_silver.Dim_Customer` AS 
+SELECT 
+    ROW_NUMBER() OVER (ORDER BY CUSTOMERNAME, CITY) AS CUSTOMERNUMBER,
+    CUSTOMERNAME,
+    PHONE,
+    ADDRESSLINE1,
+    ADDRESSLINE2,
+    CITY,
+    STATE,
+    POSTALCODE,
+    COUNTRY,
+    TERRITORY,
+    CONTACTLASTNAME,
+    CONTACTFIRSTNAME
+FROM (
+    SELECT DISTINCT 
+        CUSTOMERNAME, 
+        PHONE, 
+        ADDRESSLINE1, 
+        ADDRESSLINE2, 
+        CITY, 
+        STATE, 
+        POSTALCODE, 
+        COUNTRY, 
+        TERRITORY, 
+        CONTACTLASTNAME, 
+        CONTACTFIRSTNAME
+    FROM `tpintegradorev.my_project_silver.Sales`
+)
+WHERE CUSTOMERNAME IS NOT NULL
+ORDER BY CUSTOMERNUMBER;
+
+-- Creación de la tabla Dim_Status
+CREATE OR REPLACE TABLE `tpintegradorev.my_project_silver.Dim_Status` AS 
+SELECT  
+    ROW_NUMBER() OVER (ORDER BY STATUS) AS STATUSNUMBER,
+    STATUS
+FROM (
+    SELECT DISTINCT STATUS
+    FROM `tpintegradorev.my_project_silver.Sales`
+)
+WHERE STATUS IS NOT NULL
+ORDER BY STATUSNUMBER;
+
+-- Creación de la tabla Dim_Product
+CREATE OR REPLACE TABLE `tpintegradorev.my_project_silver.Dim_Product` AS 
+SELECT 
+    PRODUCTCODE,
+    PRODUCTLINE,
+    MSRP
+FROM (
+    SELECT DISTINCT 
+        PRODUCTCODE, 
+        PRODUCTLINE, 
+        MSRP
+    FROM `tpintegradorev.my_project_silver.Sales`
+)
+WHERE PRODUCTCODE IS NOT NULL
+ORDER BY PRODUCTCODE;
+
+-- Creación de la tabla Dim_DealSize
+CREATE OR REPLACE TABLE `tpintegradorev.my_project_silver.Dim_DealSize` AS 
+SELECT 
+    ROW_NUMBER() OVER (ORDER BY DEALSIZE DESC) AS DEALSIZENUMBER,
+    DEALSIZE
+FROM (
+    SELECT DISTINCT DEALSIZE
+    FROM `tpintegradorev.my_project_silver.Sales`
+)
+WHERE DEALSIZE IS NOT NULL
+ORDER BY DEALSIZE DESC;
+```````
 
 
