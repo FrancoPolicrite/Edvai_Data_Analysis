@@ -9,7 +9,6 @@ Este proyecto tiene como objetivo analizar las ventas de productos coleccionable
 
 ---
 
-
 ## 📂 Archivos del Proyecto
 
 **Reporte interactivo:**  
@@ -17,6 +16,12 @@ Este proyecto tiene como objetivo analizar las ventas de productos coleccionable
 
 **Archivo Power BI (.pbix):**  
 [**Descargar Collectibles Sales Analysis.pbix**](./Collectibles%20Sales%20Analysis.pbix)
+
+**Plan de métricas:**  
+![Plan de Métricas](plan-de-metricas/Plandemetricas.PNG)
+
+**Scripts SQL:**  
+[**Descargar Queries.sql**](./Queries.sql)
 
 ---
 
