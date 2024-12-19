@@ -1,4 +1,4 @@
-# 🌟 Edvai_Data_Analysis
+#  Edvai_Data_Analysis
 ## 🚗 Proyecto Final - Análisis de Ventas de Vehículos de Modelos a Escala
 
 ---
