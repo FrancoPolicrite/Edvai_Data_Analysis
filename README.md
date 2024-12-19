@@ -18,7 +18,7 @@ Este proyecto tiene como objetivo analizar las ventas de productos coleccionable
 [**Descargar Collectibles Sales Analysis.pbix**](./Collectibles%20Sales%20Analysis.pbix)
 
 **Plan de métricas:**  
-![Plan de Métricas](plan-de-metricas/Plandemetricas.PNG)
+[**Ver Plan de Métricas**](./plan-de-metricas/Plandemetricas.PNG)
 
 **Scripts SQL:**  
 [**Descargar Queries.sql**](./Queries.sql)
