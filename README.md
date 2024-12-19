@@ -15,13 +15,11 @@ Este proyecto tiene como objetivo analizar las ventas de productos coleccionable
 **Reporte en Power BI Service:**  
 [**Ver Reporte en Power BI**](https://app.powerbi.com/groups/me/reports/b5c05d4b-fb8f-4df2-90ad-3e7a74ece842?ctid=a3d57d28-f284-4666-978d-886b156f977c&pbi_source=linkShare)
 
-<div align="center">
-    <iframe title="Collectibles Sales Analysis" width="800" height="450" src="https://app.powerbi.com/view?r=eyJrIjoiYmU0N2RjZmItZWU4ZC00ZDc0LTg4YTAtMWU1ZTUxNTY0YzI1IiwidCI6ImEzZDU3ZDI4LWYyODQtNDY2Ni05NzhkLTg4NmIxNTZmOTc3YyIsImMiOjR9&embedImagePlaceholder=true&pageName=509faa99ae2a5e346e2c" frameborder="0" allowFullScreen="true"></iframe>
-</div>
+**Iframe del reporte interactivo:**  
+[**Ver Reporte Embebido en GitHub Pages**](https://francopolicrite.github.io/Edvai_Data_Analysis/)
 
 **Archivo Power BI (.pbix):**  
 [**Descargar Collectibles Sales Analysis.pbix**](./Collectibles%20Sales%20Analysis.pbix)
-
 
 ---
 
