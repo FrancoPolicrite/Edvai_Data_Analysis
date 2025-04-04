@@ -337,7 +337,7 @@ Los dashboards fueron diseñados con el objetivo de facilitar la comprensión de
 
 ![General Summary](images/GeneralSummary.PNG)
 
-![Sales Analysis by Product Line](images/Sales%20Analysis%20by%20ProductLine.PNG)
+![Sales Analysis by Product Line](images/SalesAnalysisbyProductLine.PNG)
 
 ![Temporal Analysis](images/TemporalAnalysis.PNG)
 
