@@ -244,6 +244,7 @@ SELECT
     s.PRODUCTCODE,
     dc.CUSTOMERNUMBER,
     dd.DEALSIZENUMBER,
+    dp.PRODUCTNUMBER,
     s.PRICEEACH
 FROM `tpintegradorev.my_project_silver.Sales` s
 LEFT JOIN `tpintegradorev.my_project_silver.Dim_Status` ds 
@@ -252,6 +253,8 @@ LEFT JOIN `tpintegradorev.my_project_silver.Dim_Customer` dc
     ON s.CUSTOMERNAME = dc.CUSTOMERNAME AND s.CITY = dc.CITY
 LEFT JOIN `tpintegradorev.my_project_silver.Dim_DealSize` dd 
     ON s.DEALSIZE = dd.DEALSIZE;
+LEFT JOIN `tpintegradorev.my_project_silver.Dim_Product` dp 
+    ON s.PRODUCTCODE = dp.PRODUCTCODE;
 ```````
 
 # 📏 Métricas de Rendimiento
